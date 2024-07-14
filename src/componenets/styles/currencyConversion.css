@@ -1,0 +1,37 @@
+body{
+    font-family: "Open Sans", sans-serif;
+}
+
+.currency-conversion-layout{
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 150px 100px 50px 100px;
+    padding: 50px;
+
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    font-weight: 600;
+    margin-bottom: 50px;
+}
+
+.converterWrapper{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.currency-container{
+    border-radius: 10px;
+
+}
+
+.input-textfield, .output-textfield{
+    width: 280px;
+    padding: 5px;
+
+}

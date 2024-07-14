@@ -6,6 +6,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
+import "./styles/currencyConversion.css";
 
 
 const base_url = process.env.REACT_APP_BASE_URL;
@@ -169,7 +170,10 @@ export default function CurrencyConversion() {
 
             <div className='header'>Currency Converter</div>
 
+            <div className='converterWrapper'>
+
             <Box
+            className='currency-container'
                 component="form"
                 sx={{
                     '& .MuiTextField-root': { m: 1, width: '25ch' },
@@ -182,12 +186,14 @@ export default function CurrencyConversion() {
                     {/* for source currency */}
                     <TextField
                         id="outlined-select-currency"
+                        sx={{backgroundColor: '#F1F2F5'}}
                         select
                         label="Source"
                         defaultValue="USD"
                         helperText=""
                         value={sourceCur || ""}
                         onChange={handleSourceDropdownSelection}
+                        
                     >
                         {currList.map((option) => (
                             <MenuItem key={option[0]} value={option[0]}>
@@ -199,6 +205,7 @@ export default function CurrencyConversion() {
                     {/* for target currency */}
                     <TextField
                         id="outlined-select-currency"
+                        sx={{backgroundColor: '#F1F2F5'}}
                         select
                         label="Target"
                         defaultValue="EUR"
@@ -224,25 +231,28 @@ export default function CurrencyConversion() {
             {/* input section */}
 
             <Box
+            className='input-container'
                 component="form"
                 sx={{
-                    '& > :not(style)': { m: 1, width: '40ch', display: "flex", flexWrap: "nowrap", gap: 2 },
+                    '& > :not(style)': { width: '50ch', display: "flex", flexWrap: "nowrap", gap: 2, mb: 6, mt: 3, ml: 1},
                 }}
             >
-                <div>
+                <div className='input-textfields'>
 
-                    <TextField type="number" id="standard-basic" label="" variant="standard" value={srcInputVal || ""} onChange={handleSrcInputVal} />
+                    <TextField className="input-textfield" type="number" id="standard-basic" label="" variant="standard" value={srcInputVal || ""} onChange={handleSrcInputVal} />
 
-                    <TextField disabled id="standard-basic" label="" variant="standard" value={tarInputVal || ""} onChange={handleTarInputVal} />
+                    <TextField className="output-textfield" disabled id="standard-basic" label="" variant="standard" value={tarInputVal || ""} onChange={handleTarInputVal} />
 
                 </div>
             </Box>
 
             {/* date picker section */}
 
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <LocalizationProvider dateAdapter={AdapterDayjs} className="date-picker-container">
+                
 
                 <DatePicker
+                 sx={{backgroundColor: '#F1F2F5'}}
                     label="Select Date"
                     value={dayjs(value)}
                     format='YYYY/MM/DD'
@@ -251,6 +261,8 @@ export default function CurrencyConversion() {
                 />
 
             </LocalizationProvider>
+
+            </div>
 
         </div>
 
